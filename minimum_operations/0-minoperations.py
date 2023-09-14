@@ -1,38 +1,30 @@
 #!/usr/bin/python3
-"""Minimum Operations - Alu-interview"""
+""" Minimum operations Repo - ALU Interview Project """
 
 import math
 
-def minOperations(n):
-    """
-    Calculate the fewest number of operations needed to result in exactly n H characters in the file.
+def min_operations(n):
+  """
+  Calculates the fewest number of operations needed to result in exactly n H characters in the file.
 
-    Args:
-        n (int): The target number of H characters.
+  Args:
+    n: The number of H characters to be achieved.
 
-    Returns:
-        int: The minimum number of operations required to achieve n H characters.
-             If n is impossible to achieve, return 0.
-    """
-    if n <= 1:
-        return 0
+  Returns:
+    The fewest number of operations needed.
+  """
 
-    operations = 0
+  if n <= 1:
+    return 0
 
-    # Iterate through numbers from 2 to the square root of n
-    for i in range(2, int(math.sqrt(n)) + 1):
-        while n % i == 0:
-            operations += i
-            n //= i
+  operations = 0
+  for i in range(2, int(n ** 0.5) + 1):
+    while n % i == 0:
+      ops += i
+      n //= i
 
-    # If n is still greater than 1, add it to operations
-    if n > 1:
-        operations += n
+  if n > 1:
+    operations += n
 
-    return operations
+  return operations
 
-# Example usage:
-if __name__ == "__main__":
-    n = 9
-    result = minOperations(n)
-    print(f"Number of operations to achieve {n} H characters: {result}")
